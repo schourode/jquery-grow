@@ -11,7 +11,7 @@
 
     $.fn.grow = function (factor, options) {
         $(this).each(function () {
-            var item = $(item),
+            var item = $(this),
                 helper = item.next();
 
             if (!helper.is('.scale-helper')) {
