@@ -9,7 +9,7 @@
 (function ($) {
     'use strict';
 
-    $.fn.grow = function (factor, options) {
+    $.fn.grow = function (scaleFactor, options) {
         $(this).not('.scale-helper').each(function () {
             var item = $(this),
                 helper = item.next();
@@ -37,14 +37,15 @@
             };
 
             var baseWidth = helper.width(),
-                scaledWidth = baseWidth * factor,
                 baseHeight = helper.height(),
-                scaledHeight = baseHeight * factor,
                 basePosition = helper.position(),
+                scaledWidth = baseWidth * scaleFactor,
+                scaledHeight = baseHeight * scaleFactor,
                 scaledTop = basePosition.top + (baseHeight - scaledHeight) / 2,
-                scaledLeft = basePosition.left + (baseWidth - scaledWidth) / 2;
+                scaledLeft = basePosition.left + (baseWidth - scaledWidth) / 2,
+                zIndex = Math.ceil(scaleFactor * 1000);
 
-            item.animate({
+            item.css('z-index', zIndex).animate({
                 'width': scaledWidth,
                 'height': scaledHeight,
                 'top': scaledTop,
