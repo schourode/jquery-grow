@@ -10,7 +10,7 @@
     'use strict';
 
     $.fn.grow = function (factor, options) {
-        $(this).each(function () {
+        $(this).not('.scale-helper').each(function () {
             var item = $(this),
                 helper = item.next();
 
