@@ -23,6 +23,13 @@ Use the second (optional) parameter if you wish to control the duration of the a
     $('.explosion').grow(5, 'fast');
     $('.tree').grow(2, 3000);
 
+# Examples
+
+Try out this simple [jQuery-grow() example on JS bin][jsbin], where you can see and modify the sample live in your browser. For an example of the plugin used on a production site, try hovering the product thumbnails of [Fritz Hansen's Series 7][fritz].
+
+[jsbin]: http://jsbin.com/grow/edit
+[fritz]: http://www.fritzhansen.com/en/chairs#series-7
+
 # License
 
 Dual licensed under the MIT or GPL Version 2 licenses:
