@@ -10,35 +10,29 @@
     'use strict';
 
     $.fn.grow = function (scaleFactor, options) {
-        $(this).not('.scale-helper').each(function () {
-            var item = $(this),
-                helper = item.next();
+        $(this).each(function () {
+            var item = $(this);
 
-            if (!helper.is('.scale-helper')) {
-                var position = item.position();
+	    if (!item.data('grow_original_width')) {
+
+		item.data('grow_original_width',item.width());
+		item.data('grow_original_height',item.height());
+		item.data('grow_original_position',item.position());
 
                 item.css({
                     'width': item.width(),
-                    'height': item.height()
-                });
-
-                helper = item.clone(false)
-                    .addClass('scale-helper')
-                    .css('visibility', 'hidden')
-                    .insertAfter(item);
-
-                item.css({
+                    'height': item.height(),
                     'max-width': 'none',
                     'max-height': 'none',
                     'position': 'absolute',
-                    'top': position.top,
-                    'left': position.left
+                    'top': item.position().top,
+                    'left': item.position().left
                 });
             };
 
-            var baseWidth = helper.width(),
-                baseHeight = helper.height(),
-                basePosition = helper.position(),
+            var baseWidth = item.data('grow_original_width'),
+                baseHeight = item.data('grow_original_height'),
+                basePosition = item.data('grow_original_position'),
                 scaledWidth = baseWidth * scaleFactor,
                 scaledHeight = baseHeight * scaleFactor,
                 scaledTop = basePosition.top + (baseHeight - scaledHeight) / 2,
